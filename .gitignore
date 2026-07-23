@@ -1,3 +1,5 @@
 .env 
 
 node_modules/
+# Google Cloud service account credentials
+nest-ms-fernando-herrera-f5943a35a958.json

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: products-ms
+  name: products-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: products-ms
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: products-ms
+    spec:
+      containers:
+      - image: southamerica-west1-docker.pkg.dev/nest-ms-fernando-herrera/nest-image-registry-fernando-herrera/products-ms:sqlite-permissions-v1
+        name: products-ms
+        env:
+        - name: PORT
+          value: "3000"
+        - name: "NATS_SERVERS"
+          value: "nats://nats"
+        - name: "DATABASE_URL"
+          value: "file:/usr/src/app/prisma/dev.db"
+        resources: {}
+status: {}
